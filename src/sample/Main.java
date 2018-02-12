@@ -8,13 +8,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        GameOfLife game = new GameOfLife(20, 20);
+        GameOfLife game = new GameOfLife(22, 22);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(game.getScene());
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
-        game.start(400);
+        game.start(200);
 
     }
 

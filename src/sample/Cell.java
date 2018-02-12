@@ -5,10 +5,11 @@ import javafx.scene.shape.Rectangle;
 
 public class Cell {
 
-    private static int size = 30;
+    private static double size = 30;
 
     private Rectangle cell;
     private Boolean alive;
+    private static int state = 0;
 
     public Cell() {
         cell = new Rectangle(size, size);
@@ -21,8 +22,35 @@ public class Cell {
         return cell;
     }
 
+    public static void setState(int newState) {
+        state = newState;
+    }
+
+    public static void setSize(double newSize) {
+        size = newSize;
+    }
+
     public void makeAlive() {
-        cell.setFill(Color.BLACK);
+        switch (state) {
+            case 0:
+                cell.setFill(Color.BLACK);
+                break;
+            case 1:
+                cell.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+                break;
+            case 2:
+                cell.setFill(Color.color(Math.random(), Math.random(), Math.random()).grayscale());
+                break;
+            case 3:
+                cell.setFill(Color.color(Math.random(), Math.random(), Math.random()).brighter());
+                break;
+            case 4:
+                cell.setFill(Color.color(Math.random(), Math.random(), Math.random()).darker());
+                break;
+            case 5:
+                cell.setFill(Color.color(Math.random(), Math.random(), Math.random()).saturate());
+                break;
+        }
         alive = true;
     }
 
