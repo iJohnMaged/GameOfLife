@@ -38,6 +38,11 @@ public class GameOfLife {
                 }
             }
         }
+//        cells[3][3].makeAlive();
+//        cells[3][4].makeAlive();
+//        cells[4][3].makeAlive();
+//
+//        cells[4][4].makeAlive();
     }
 
     public Scene getScene() {
@@ -70,9 +75,10 @@ public class GameOfLife {
                 // Check the 8 neighbors
                 for (int dx = -1; dx <= 1; dx++) {
                     for (int dy = -1; dy <= 1; dy++) {
-                        if (i + dx < 0 || i + dx >= cols || j + dy < 0 || j + dy >= rows || (dx == dy && dy == 0))
-                            continue;
-                        if (cells[i + dx][j + dy].isAlive())
+                        int x = (((i + dx) % cols) + cols) % cols;
+                        int y = (((j + dy) % rows) + rows) % rows;
+                        if (dx == dy && dy == 0) continue;
+                        if (cells[x][y].isAlive())
                             cellsStates[i][j]++;
                     }
                 }
